@@ -30,4 +30,16 @@ InnerInk is a personal journaling app that gives users a safe, private space to 
 
 # Logo
 
-![alt text](image.png)
+![image](/assets/Logo.png)
+
+# Wireframe
+
+![image](/assets/Wireframe.png)
+
+# ERD
+
+![image](/assets/ERD.png)
+
+# Enum Examples (mood)
+
+![image](/assets/Enum.png)

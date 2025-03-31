@@ -4,6 +4,10 @@
 
 ---
 
+## What is InnerInk
+
+InnerInk is a personal journaling app that gives users a safe, private space to reflect, write, and track their thoughts over time. With a clean, minimal interface and session-based login, users can create, edit, and organize journal entries securely. Each entry is tied to a user, ensuring privacy and personalization. Whether it’s daily reflections, mood tracking, or creative writing, InnerInk helps users stay connected to their inner voice, one entry at a time.
+
 ## Features
 
 - User authentication with sessions (register, login, logout)
@@ -14,6 +18,12 @@
 - Clean UI using EJS templates
 
 ---
+
+![image](/assets/Wireframe.png)
+
+# ERD
+
+![image](/assets/ERD.png)
 
 ## Technology used
 
