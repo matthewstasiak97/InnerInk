@@ -20,3 +20,23 @@ export const showEntry = async (req, res) => {
     res.send("Error loading entry");
   }
 };
+
+export const getEditEntryForm = async (req, res) => {
+  const entry = await entry.findOne({
+    _id: req.params.id,
+    userId: req.session.user._id,
+  });
+  res.render("entries/edit", { entry, user: req.session.user });
+};
+
+export const updateEntry = async (req, res) => {
+  await entry.findOneAndUpdate(
+    { _id: req.params.id, userId: req.session.user._id },
+    {
+      title: req.body.title,
+      content: req.body.content,
+      mood: req.body.mood,
+    }
+  );
+  res.redirect(`/entries/${req.params.id}`);
+};
