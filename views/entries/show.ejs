@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entry</title>
+  </head>
+  <body>
+    <h1><%= entry.title %></h1>
+    <p><%= entry.content %></p>
+    <% if (entry.mood) { %>
+    <p>Mood: <%= entry.mood %></p>
+    <% } %>
+
+    <small>Created on <%= entry.createdAt.toDateString() %></small>
+    <a href="/journals/<%= entry.journalId %>">Back to Journal</a>
+  </body>
+</html>

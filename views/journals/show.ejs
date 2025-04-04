@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Journal</title>
+  </head>
+  <body>
+    <h1><% journal.title %></h1>
+
+    <% if (journal.description) { %>
+    <p><%= journal.descritpion %></p>
+    <% } %>
+
+    <a href="/entries/new?journalId=<%= journal._id %>">Add Entry</a>
+
+    <% if (entries.length > 0) { %>
+    <ul class="entry-list">
+      <% entries.forEach(entry => { %>
+      <li>
+        <a href="/entries/<%= entry._id %>"><%= entry.title %></a>
+        <small><%= entry.createdAt.toDateString() %></small>
+      </li>
+
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p>No entries yet. Create one!</p>
+    <% } %>
+  </body>
+</html>

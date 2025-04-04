@@ -1,9 +1,8 @@
 import { Router } from "express";
 import User from "../models/user.js";
+import bcrypt from "bcrypt";
 
 const router = Router();
-
-// routes list
 
 export const getSignUp = (req, res) => {
   res.render("auth/sign-up");
@@ -27,6 +26,7 @@ export const registerUser = async (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
     const user = await User.create({
+      email: req.body.email,
       username: req.body.username,
       password: hashedPassword,
     });
@@ -66,7 +66,7 @@ export const loginUser = async (req, res) => {
   };
 
   req.session.save(() => {
-    req.redirect("/");
+    res.redirect("/");
   });
 };
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Journals</title>
+  </head>
+  <body>
+    <h1>Your Journals</h1>
+    <a href="/journals/new">Create New Journal</a>
+
+    <% if (journals.length > 0) { %>
+    <ul class="journal-list">
+      <% journals.forEach(journal => { %>
+      <li class="journal-card">
+        <h2><%= journal.title %></h2>
+
+        <% if (journal.description) { %>
+        <p><%= journal.description %></p>
+        <% } %>
+
+        <small>Created on <%= journal.createdAt.toDateString() %></small>
+      </li>
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p>You don't have any journals yet.</p>
+    <% } %>
+  </body>
+</html>

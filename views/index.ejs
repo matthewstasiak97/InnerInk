@@ -7,12 +7,21 @@
   </head>
   <body>
     <img src="./assets/Logo.png" alt="" />
+    <% if (user) {%>
+    <h1>Welcome to InnerInk, <%= user.username%>!</h1>
+    <nav>
+      <a href="/auth/sign-out">Sign out</a>
+    </nav>
+    <div class="actions">
+      <a href="/journals/new">Create New Journal</a>
+      <a href="/entries/new">New Journal Entry</a>
+    </div>
+    <% } else { %>
     <h1>Welcome to InnerInk</h1>
-    <a href="/auth/sign-up">
-      <button>Sign Up</button>
-    </a>
-    <a href="/auth/sign-in">
-      <button>Sign In</button>
-    </a>
+    <nav>
+      <a href="/auth/sign-up">Sign Up</a>
+      <a href="/auth/sign-in">Sign in</a>
+    </nav>
+    <% } %>
   </body>
 </html>

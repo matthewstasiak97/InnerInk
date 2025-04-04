@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Journals</title>
+  </head>
+  <body>
+    <h1>Create a New Journal</h1>
+    <form action="/journals" method="POST">
+      <label for="title">Journal Title:</label>
+      <input type="text" id="title" name="title" required />
+      <label for="description">Description (optional):</label>
+      <textarea name="description" id="description"></textarea>
+
+      <button type="submit">Create Journal</button>
+    </form>
+    <a href="/journals">Back to My Journals</a>
+  </body>
+</html>
