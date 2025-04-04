@@ -2,10 +2,10 @@
   "name": "innerink",
   "version": "1.0.0",
   "description": "**InnerInk** is a secure, personal journaling app that helps users reflect and document their thoughts in organized, customizable journals. Built with Node.js, Express, MongoDB, and EJS, InnerInk provides full CRUD functionality with session-based authentication and user-specific data management.",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
