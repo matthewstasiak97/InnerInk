@@ -12,7 +12,7 @@ InnerInk is a personal journaling app that gives users a safe, private space to 
 
 - User authentication with sessions (register, login, logout)
 - Create multiple journals to organize your entries
-- Full CRUD support for journal entries
+- Full CRUD support for journal and entries
 - User authorization to protect private data
 - Deployed and accessible online
 - Clean UI using EJS templates
