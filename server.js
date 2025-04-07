@@ -16,10 +16,10 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
 
 //MiddleWare
-app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride("_method"));
-app.use(morgan("dev"));
-app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false })); // Handles Form data
+app.use(methodOverride("_method")); //Allows PUT and DELETE requests
+app.use(morgan("dev")); // logging tool
+app.use(express.static("public")); // Incorporated CSS statically here because it will not change.
 app.set("view engine", "ejs");
 
 app.use(
@@ -50,10 +50,6 @@ mongoose
   .catch((err) => {
     console.error("MongoDB connection error:", err);
   });
-
-//Routes
-
-// app.use("/", router);
 
 app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`);
