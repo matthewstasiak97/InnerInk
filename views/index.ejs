@@ -7,25 +7,23 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <img src="./assets/Logo.png" alt="InnerInk Logo" />
+    <main class="container">
+      <% if (user) { %>
+      <h1>Welcome to InnerInk, <%= user.username %>!</h1>
 
-    <% if (user) { %>
-    <h1>Welcome to InnerInk, <%= user.username %>!</h1>
-    <nav>
-      <a href="/auth/sign-out">Sign out</a>
-    </nav>
-
-    <div class="actions">
-      <a href="/journals/new">Create New Journal</a>
-      <a href="/entries/new">New Journal Entry</a>
-      <a href="/journals" class="button">View My Journals</a>
-    </div>
-    <% } else { %>
-    <h1>Welcome to InnerInk</h1>
-    <nav>
-      <a href="/auth/sign-up">Sign Up</a>
-      <a href="/auth/sign-in">Sign In</a>
-    </nav>
-    <% } %>
+      <div class="actions">
+        <a href="/journals/new" class="button">Create New Journal</a>
+        <a href="/entries/new" class="button">New Journal Entry</a>
+        <a href="/journals" class="button">View My Journals</a>
+        <a href="/auth/sign-out" class="button">Sign out</a>
+      </div>
+      <% } else { %>
+      <h1>Welcome to InnerInk</h1>
+      <nav>
+        <a href="/auth/sign-up" class="button">Sign Up</a>
+        <a href="/auth/sign-in" class="button">Sign In</a>
+      </nav>
+      <% } %>
+    </main>
   </body>
 </html>

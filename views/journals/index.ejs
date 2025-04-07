@@ -7,25 +7,37 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Your Journals</h1>
-    <a href="/journals/new">Create New Journal</a>
+    <main class="container">
+      <a href="/" class="button">Back to Home</a>
 
-    <% if (journals.length > 0) { %>
-    <ul class="journal-list">
-      <% journals.forEach(journal => { %>
-      <li class="journal-card">
-        <h2><%= journal.title %></h2>
+      <h1>Your Journals</h1>
+      <a href="/journals/new" class="button"> Create New Journal</a>
 
-        <% if (journal.description) { %>
-        <p><%= journal.description %></p>
-        <% } %>
+      <% if (journals.length > 0) { %>
+      <ul class="journal-list">
+        <% journals.forEach(journal => { %>
+        <li class="journal-card">
+          <h2><%= journal.title %></h2>
 
-        <small>Created on <%= journal.createdAt.toDateString() %></small>
-      </li>
-      <% }) %>
-    </ul>
-    <% } else { %>
-    <p>You don't have any journals yet.</p>
-    <% } %>
+          <% if (journal.description) { %>
+          <p><%= journal.description %></p>
+          <% } %>
+
+          <small>Created on <%= journal.createdAt.toDateString() %></small>
+
+          <a href="/journals/<%= journal._id %>" class="button">View</a>
+          <a href="/entries/new?journalId=<%= journal._id %>" class="button">
+            Add Entry</a
+          >
+          <a href="/journals/<%= journal._id %>/edit" class="button">Edit</a>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p>You don't have any journals yet.</p>
+      <% } %>
+
+      <a href="/auth/sign-out" class="button"> Sign out</a>
+    </main>
   </body>
 </html>

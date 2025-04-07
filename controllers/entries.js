@@ -62,8 +62,9 @@ export const deleteEntry = async (req, res) => {
     _id: req.params.id,
     userId: req.session.user._id,
   });
+
   if (entry) {
-    await Entry.deleteOne();
+    await Entry.deleteOne({ _id: entry._id });
     res.redirect(`/journals/${entry.journalId}`);
   } else {
     res.send("Entry not found");

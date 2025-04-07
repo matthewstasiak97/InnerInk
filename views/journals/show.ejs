@@ -3,45 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= journal.title %> – Journal</title>
+    <title><%= journal.title %>Journal</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <% if (user) { %>
-    <nav style="margin-bottom: 1rem">
-      <a href="/auth/sign-out">🚪 Sign out</a>
-    </nav>
-    <% } %>
+    <main class="container">
+      <% if (user) { %>
+      <nav>
+        <a href="/auth/sign-out" class="button">Sign out</a>
+      </nav>
+      <% } %>
 
-    <h1><%= journal.title %></h1>
+      <h1><%= journal.title %></h1>
 
-    <% if (journal.description) { %>
-    <p><%= journal.description %></p>
-    <% } %>
+      <% if (journal.description) { %>
+      <p><%= journal.description %></p>
+      <% } %>
 
-    <a href="/entries/new?journalId=<%= journal._id %>" class="button"
-      >➕ Add Entry</a
-    >
+      <a href="/entries/new?journalId=<%= journal._id %>" class="button"
+        >Add Entry</a
+      >
 
-    <% if (entries.length > 0) { %>
-    <ul class="entry-list">
-      <% entries.forEach(entry => { %>
-      <li>
-        <a href="/entries/<%= entry._id %>"><%= entry.title %></a>
-        <small><%= entry.createdAt.toDateString() %></small>
+      <% if (entries.length > 0) { %>
+      <ul class="entry-list">
+        <% entries.forEach(entry => { %>
+        <li>
+          <a href="/entries/<%= entry._id %>"><%= entry.title %></a>
+          <small><%= entry.createdAt.toDateString() %></small>
 
-        <a href="/entries/<%= entry._id %>/edit" class="button small"
-          >✏️ Edit</a
-        >
-      </li>
-      <% }) %>
-    </ul>
-    <% } else { %>
-    <p>No entries yet. Create one!</p>
-    <% } %>
+          <a href="/entries/<%= entry._id %>/edit" class="button small">Edit</a>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p>No entries yet. Create one!</p>
+      <% } %>
 
-    <a href="/journals/<%= journal._id %>/edit" class="button"
-      >🛠 Edit Journal</a
-    >
+      <a href="/journals/<%= journal._id %>/edit" class="button"
+        >Edit Journal</a
+      >
+      <a href="/journals" class="button"> Back to Journals</a>
+    </main>
   </body>
 </html>

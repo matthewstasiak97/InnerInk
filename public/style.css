@@ -1,14 +1,22 @@
-/* Base styles */
+/* === Base styles === */
 body {
-  font-family: system-ui, sans-serif;
-  background: #f5f6fa;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background-color: #f4f6f8;
   color: #2f3640;
-  padding: 2rem;
   margin: 0;
+  padding: 2rem;
   line-height: 1.6;
 }
 
-/* Layout helpers */
+/* === Headings === */
+h1,
+h2,
+h3 {
+  color: #2f3640;
+  margin-bottom: 0.5rem;
+}
+
+/* === Navigation === */
 nav {
   display: flex;
   justify-content: flex-end;
@@ -16,65 +24,101 @@ nav {
   margin-bottom: 2rem;
 }
 
-a {
-  color: #40739e;
+/* === Buttons === */
+.button {
+  display: inline-block;
+  background-color: #40739e;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
   text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid #2f3640;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s;
 }
 
-a:hover {
-  text-decoration: underline;
+.button:hover {
+  background-color: #2f3640;
+  border-color: #40739e;
 }
 
-/* Forms */
+.button.small {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.875rem;
+}
+
+/* === Flexbox layout for action buttons === */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+/* === Forms === */
 form {
   max-width: 600px;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 label {
   display: block;
   margin-top: 1rem;
+  font-weight: 600;
 }
 
 input,
 textarea,
 select {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
-/* Buttons */
-button,
-input[type="submit"] {
+input[type="submit"],
+button {
   background-color: #40739e;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   margin-top: 1rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
-button:hover,
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+button:hover {
   background-color: #2f3640;
 }
 
-/* Entry and journal cards */
-.entry-list,
-.journal-list {
+/* === Lists === */
+ul.journal-list,
+ul.entry-list {
   list-style: none;
   padding: 0;
 }
 
+/* === Journal & Entry Cards === */
+.journal-card,
+.entry-card,
 .entry-list li,
 .journal-list li {
   background: white;
-  padding: 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }

@@ -31,7 +31,7 @@ InnerInk is a personal journaling app that gives users a safe, private space to 
 - **Frontend:** EJS templates, HTML, CSS
 - **Database:** MongoDB + Mongoose
 - **Authentication:** Express-session, bcrypt
-- **Deployment:** Render
+- **Deployment:** Railway
 - **Environment:** dotenv
 
 ### Future Steps
@@ -43,6 +43,8 @@ InnerInk is a personal journaling app that gives users a safe, private space to 
 3. Expand on the text editor to make it more appeling to the user
 
 4. Introduce entry search functionality
+
+5. Improve CSS
 
 ### External Resources
 

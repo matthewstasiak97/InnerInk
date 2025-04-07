@@ -7,26 +7,30 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Create a New Entry</h1>
-    <form action="/entries" method="POST">
-      <label for="title">Entry Title:</label>
-      <input type="text" id="title" name="title" required />
-      <label for="content">Content:</label>
-      <textarea name="content" id="content" required></textarea>
-      <label for="mood">Mood:</label>
-      <select name="mood" id="mood">
-        <option value="😃">😃 Happy</option>
-        <option value="😢">😢 Sad</option>
-        <option value="😡">😡 Angry</option>
-        <option value="🤯">🤯 Overwhelmed</option>
-      </select>
-      <label for="journalId">Select Journal:</label>
-      <select name="journalId" required>
-        <% journals.forEach(journal => { %>
-        <option value="<%= journal._id  %>"><%= journal.title %></option>
-        <% }) %>
-      </select>
-      <button type="submit">Save Entry</button>
-    </form>
+    <main class="container">
+      <a href="/" class="button">Back to Home</a>
+
+      <h1>Create a New Entry</h1>
+      <form action="/entries" method="POST">
+        <label for="title">Entry Title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" required></textarea>
+        <label for="mood">Mood:</label>
+        <select name="mood" id="mood">
+          <option value="😃">😃 Happy</option>
+          <option value="😢">😢 Sad</option>
+          <option value="😡">😡 Angry</option>
+          <option value="🤯">🤯 Overwhelmed</option>
+        </select>
+        <label for="journalId">Select Journal:</label>
+        <select name="journalId" required>
+          <% journals.forEach(journal => { %>
+          <option value="<%= journal._id  %>"><%= journal.title %></option>
+          <% }) %>
+        </select>
+        <button type="submit">Save Entry</button>
+      </form>
+    </main>
   </body>
 </html>
