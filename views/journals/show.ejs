@@ -3,16 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Journal</title>
+    <title><%= journal.title %> – Journal</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1><% journal.title %></h1>
-
-    <% if (journal.description) { %>
-    <p><%= journal.descritpion %></p>
+    <% if (user) { %>
+    <nav style="margin-bottom: 1rem">
+      <a href="/auth/sign-out">🚪 Sign out</a>
+    </nav>
     <% } %>
 
-    <a href="/entries/new?journalId=<%= journal._id %>">Add Entry</a>
+    <h1><%= journal.title %></h1>
+
+    <% if (journal.description) { %>
+    <p><%= journal.description %></p>
+    <% } %>
+
+    <a href="/entries/new?journalId=<%= journal._id %>" class="button"
+      >➕ Add Entry</a
+    >
 
     <% if (entries.length > 0) { %>
     <ul class="entry-list">
@@ -20,12 +29,19 @@
       <li>
         <a href="/entries/<%= entry._id %>"><%= entry.title %></a>
         <small><%= entry.createdAt.toDateString() %></small>
-      </li>
 
+        <a href="/entries/<%= entry._id %>/edit" class="button small"
+          >✏️ Edit</a
+        >
+      </li>
       <% }) %>
     </ul>
     <% } else { %>
     <p>No entries yet. Create one!</p>
     <% } %>
+
+    <a href="/journals/<%= journal._id %>/edit" class="button"
+      >🛠 Edit Journal</a
+    >
   </body>
 </html>

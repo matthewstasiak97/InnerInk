@@ -4,15 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entry</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
+    <% if (user) { %>
+    <nav style="margin-bottom: 1rem">
+      <a href="/auth/sign-out">Sign out</a>
+    </nav>
+    <% } %>
+
     <h1><%= entry.title %></h1>
     <p><%= entry.content %></p>
+
     <% if (entry.mood) { %>
     <p>Mood: <%= entry.mood %></p>
     <% } %>
 
     <small>Created on <%= entry.createdAt.toDateString() %></small>
-    <a href="/journals/<%= entry.journalId %>">Back to Journal</a>
+
+    <div style="margin-top: 1rem">
+      <a href="/journals/<%= entry.journalId %>">Back to Journal</a>
+      <a href="/entries/<%= entry._id %>/edit">Edit Entry</a>
+    </div>
   </body>
 </html>

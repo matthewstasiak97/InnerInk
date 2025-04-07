@@ -11,4 +11,5 @@ const journalSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Journal", journalSchema);
+const journal = mongoose.model("Journal", journalSchema);
+export default journal;

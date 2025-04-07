@@ -1,0 +1,80 @@
+/* Base styles */
+body {
+  font-family: system-ui, sans-serif;
+  background: #f5f6fa;
+  color: #2f3640;
+  padding: 2rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Layout helpers */
+nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+a {
+  color: #40739e;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Forms */
+form {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
+  background-color: #40739e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #2f3640;
+}
+
+/* Entry and journal cards */
+.entry-list,
+.journal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.entry-list li,
+.journal-list li {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}

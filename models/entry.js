@@ -16,3 +16,6 @@ const entrySchema = new mongoose.Schema({
     required: true,
   },
 });
+
+const entry = mongoose.model("Entry", entrySchema);
+export default entry;

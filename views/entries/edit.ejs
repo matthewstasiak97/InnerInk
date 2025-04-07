@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Entry</title>
+    <link rel="stylesheet" href="/style.css" />
+
+  </head>
+  <body>
+    <h1>Edit Entry</h1>
+    <form action="/entries/<%= entry.id %>?_method=PUT" method="POST">
+      <label>Title:</label>
+      <input name="title" value="<%= entry.title %>" required />
+      <label>Content:</label>
+      <textarea name="content" required><%= entry.content %></textarea>
+
+      <label>Mood:</label>
+      <select name="mood">
+        <option value="">--</option>
+        <option value="😀"<%= entry.mood === "😀" ? "selected": "" %>>😀 Happy</option>
+        <option value="😢"<%= entry.mood === "😢" ? "selected": "" %>>😢 Sad</option>
+        <option value="😡"<%= entry.mood === "😡" ? "selected": "" %>>😡 Angry</option>
+        <option value="🤯"<%= entry.mood === "🤯" ? "selected": "" %>>🤯 Overwhelmed</option>
+      </select>
+      <button type="submit">Save Changes</button>
+    </form>
+    <form action="/entries/<%= entry._id %>?_method=DELETE" method="POST">
+        <button type="submit" onclick="return confirm('Delete this entry?')">Delete Entry</button>
+    </form>
+    <a href="/entries/<%= entry._id %>">Cancel</a>
+  </body>
+</html>

@@ -1,5 +1,5 @@
-import journal from "../models/journal.js";
-import entry from "../models/entry.js";
+import Journal from "../models/journal.js";
+import Entry from "../models/entry.js";
 
 export const getNewJournalForm = (req, res) => {
   res.render("journals/new", { user: req.session.user });
@@ -7,7 +7,7 @@ export const getNewJournalForm = (req, res) => {
 
 export const postNewJournal = async (req, res) => {
   try {
-    await journal.create({
+    await Journal.create({
       title: req.body.title,
       description: req.body.description,
       userId: req.session.user._id,
@@ -21,7 +21,7 @@ export const postNewJournal = async (req, res) => {
 
 export const getUserJournals = async (req, res) => {
   try {
-    const journals = await journal.find({ userId: req.session.user._id });
+    const journals = await Journal.find({ userId: req.session.user._id });
     res.render("journals/index", {
       user: req.session.user,
       journals,
@@ -34,15 +34,17 @@ export const getUserJournals = async (req, res) => {
 
 export const getJournalEntries = async (req, res) => {
   try {
-    const journalId = req.params.id;
-
-    const journal = await journalModel.findOne({
-      _id: journalId,
+    const journal = await Journal.findOne({
+      _id: req.params.id,
       userId: req.session.user._id,
     });
 
-    const entries = await entry.find({
-      journalId,
+    if (!journal) {
+      return res.send("Journal not found or access denied.");
+    }
+
+    const entries = await Entry.find({
+      journalId: journal._id,
       userId: req.session.user._id,
     });
 
@@ -50,5 +52,52 @@ export const getJournalEntries = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.send("Could not load journal.");
+  }
+};
+
+export const getEditJournalForm = async (req, res) => {
+  try {
+    const journal = await Journal.findOne({
+      _id: req.params.id,
+      userId: req.session.user._id,
+    });
+
+    if (!journal) {
+      return res.send("Journal not found");
+    }
+
+    res.render("journals/edit", { journal, user: req.session.user });
+  } catch (err) {
+    console.error(err);
+    res.send("Error loading edit form");
+  }
+};
+
+export const updateJournal = async (req, res) => {
+  try {
+    await Journal.findOneAndUpdate(
+      { _id: req.params.id, userId: req.session.user._id },
+      {
+        title: req.body.title,
+        description: req.body.description,
+      }
+    );
+    res.redirect(`/journals/${req.params.id}`);
+  } catch (err) {
+    console.error(err);
+    res.send("Error updating journal.");
+  }
+};
+
+export const deleteJournal = async (req, res) => {
+  try {
+    await Journal.deleteOne({
+      _id: req.params.id,
+      userId: req.session.user._id,
+    });
+    res.redirect("/journals");
+  } catch (err) {
+    console.error(err);
+    res.send("Error deleting journal.");
   }
 };

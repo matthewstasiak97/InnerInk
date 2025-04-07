@@ -6,7 +6,10 @@ import morgan from "morgan";
 import methodOverride from "method-override";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import router from "./routes/index.js";
+import indexRoutes from "./routes/index.js";
+import journalRoutes from "./routes/journal.js";
+import entryRoutes from "./routes/entries.js";
+import userRoutes from "./routes/users.js";
 
 const PORT = process.env.PORT || "3000";
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -16,6 +19,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
+app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.use(
@@ -32,17 +36,19 @@ app.use(
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    console.log("✅ MongoDB connected");
+    console.log("MongoDB connected");
 
-    // ✅ Only start server after successful DB connection
-    app.use("/", router);
+    app.use("/", indexRoutes);
+    app.use("/journals", journalRoutes);
+    app.use("/entries", entryRoutes);
+    app.use("/auth", userRoutes);
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server is running on http://localhost:${PORT}`);
+      console.log(`Server is running on http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
-    console.error("❌ MongoDB connection error:", err);
+    console.error("MongoDB connection error:", err);
   });
 
 //Routes
