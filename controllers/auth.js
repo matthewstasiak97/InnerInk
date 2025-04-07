@@ -48,7 +48,7 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   const userInDatabase = await User.findOne({ username: req.body.username });
   if (!userInDatabase) {
-    return res.send("Login failed. Please try again.");
+    return res.send("Incorrect Username or Password. Please try again!");
   }
 
   const validPassword = bcrypt.compareSync(
@@ -57,7 +57,7 @@ export const loginUser = async (req, res) => {
   );
 
   if (!validPassword) {
-    return res.send("Login failed. Please try again");
+    return res.send("Incorrect Username or Password. Please try again!");
   }
 
   req.session.user = {
