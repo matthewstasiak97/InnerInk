@@ -46,6 +46,8 @@ InnerInk is a personal journaling app that gives users a safe, private space to 
 
 5. Improve CSS
 
+6. Add functionality to recover forgotten password.
+
 ### External Resources
 
 - ChatGPT
