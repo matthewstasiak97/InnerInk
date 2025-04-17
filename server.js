@@ -33,11 +33,13 @@ app.use(
   })
 );
 
+// Better to export this to a connection.js file and import it here.
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log("MongoDB connected");
 
+    // Anti-pattern to setup the routes in the Promise resolve of the mongoose.connect.
     app.use("/", indexRoutes);
     app.use("/journals", journalRoutes);
     app.use("/entries", entryRoutes);
